@@ -1,3 +1,5 @@
+
+-- https://gist.github.com/rppig42/eb20337790cf17bb0d2c664d52351d5d
 function logoutWechat(eventType)
   if (eventType == hs.caffeinate.watcher.screensDidSleep) then
       print("screensDidSleep")

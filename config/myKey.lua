@@ -16,7 +16,7 @@ hs.hotkey.bind({"alt"}, "C", open("Google Chrome"))
 hs.hotkey.bind({"alt"}, "T", open("iTerm"))
 hs.hotkey.bind({"alt"}, "V", open("Visual Studio Code"))
 hs.hotkey.bind({"alt"}, "M", open("NeteaseMusic"))
-
+hs.hotkey.bind({"alt"},"O",open("Microsoft OneNote"))
 -- --   
 -- local function Chinese()
 --     hs.keycodes.currentSourceID("com.sogou.inputmethod.sogou.pinyin")

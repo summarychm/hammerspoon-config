@@ -14,7 +14,7 @@ hs.hotkey.bind({"alt"}, "E", open("Finder"))
 hs.hotkey.bind({"alt"}, "W", open("WeChat"))
 hs.hotkey.bind({"alt"}, "C", open("Google Chrome"))
 hs.hotkey.bind({"alt"}, "T", open("iTerm"))
-hs.hotkey.bind({"alt"}, "V", open("Code"))
+hs.hotkey.bind({"alt"}, "V", open("Visual Studio Code"))
 hs.hotkey.bind({"alt"}, "M", open("NeteaseMusic"))
 
 -- --   
@@ -42,15 +42,15 @@ hs.hotkey.bind({"alt"}, "M", open("NeteaseMusic"))
 -- set_app_input_method('Google Chrome', English)
 -- set_app_input_method('WeChat', Chinese)
 
--- -- 获取当前运行程序的SourceID
--- hs.hotkey.bind({'ctrl', 'cmd'}, ".", function()
---     hs.alert.show("App path:        "
---           ..hs.window.focusedWindow():application():path()
---           .."\n"
---           .."App name:      "
---           ..hs.window.focusedWindow():application():name()
---           .."\n"
---           .."IM source id:  "
---           ..hs.keycodes.currentSourceID())
--- end)
+-- 获取当前运行程序的SourceID
+hs.hotkey.bind({'ctrl', 'cmd'}, ".", function()
+    hs.alert.show("App path:        "
+          ..hs.window.focusedWindow():application():path()
+          .."\n"
+          .."App name:      "
+          ..hs.window.focusedWindow():application():name()
+          .."\n"
+          .."IM source id:  "
+          ..hs.keycodes.currentSourceID())
+end)
 

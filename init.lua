@@ -16,4 +16,4 @@ speaker = speech.new()
 hs.notify.new({title="Manatee", informativeText="Andy, I am online!"}):send()
 
 -- Speak something after configuration success.
-speaker:speak("Andy, I am online!")
+-- speaker:speak("Andy, I am online!")

@@ -1,6 +1,40 @@
--- 学习 https://seanxp.com/2016/05/mac-hammerspoon/
+-- window management
+local application = require "hs.application"
+local hotkey = require "hs.hotkey"
+local window = require "hs.window"
+local layout = require "hs.layout"
+local grid = require "hs.grid"
+local hints = require "hs.hints"
+local screen = require "hs.screen"
+local alert = require "hs.alert"
+local fnutils = require "hs.fnutils"
+local geometry = require "hs.geometry"
+local mouse = require "hs.mouse"
+
+hyper = {"cmd", "ctrl", "alt"}
+hyperShift = {"alt", "shift"}
+hyperCtrl = {"alt", "ctrl"}
+hyperAlt = {"ctrl", "alt", "shift"}
+hAlt={"alt"}
+
+-- default 0.2
+window.animationDuration = 0
+
+---------    将光标切换到外接屏幕上  begin        ------------ 
+hs.hotkey.bind(hyper, 'n', function()
+    local screen = hs.mouse.getCurrentScreen()
+    local nextScreen = screen:next()
+    local rect = nextScreen:fullFrame()
+    local center = hs.geometry.rectMidPoint(rect)
+ 
+    hs.mouse.setAbsolutePosition(center)
+end)
+---------    将光标切换到外接屏幕上  end        ------------ 
+
+
+
+---------    快速打开应用程序  begin        ------------ 
 -- 来源 https://liuhao.im/chinese/2017/06/02/%E4%BD%BF%E7%94%A8Hammerspoon%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81.html
---- A closure function
 function open(name)
     return function()
         hs.application.launchOrFocus(name)
@@ -9,15 +43,18 @@ function open(name)
         end
     end
 end
---- quick open applications
-hs.hotkey.bind({"alt"}, "E", open("Finder"))
-hs.hotkey.bind({"alt"}, "W", open("WeChat"))
-hs.hotkey.bind({"alt"}, "C", open("Google Chrome"))
-hs.hotkey.bind({"alt"}, "T", open("iTerm"))
-hs.hotkey.bind({"alt"}, "V", open("Visual Studio Code"))
-hs.hotkey.bind({"alt"}, "M", open("NeteaseMusic"))
-hs.hotkey.bind({"alt"},"N",open("Microsoft OneNote"))
--- --   
+-- quick open applications
+hs.hotkey.bind(hAlt, "E", open("Finder"))
+hs.hotkey.bind(hAlt, "W", open("WeChat"))
+hs.hotkey.bind(hAlt, "C", open("Google Chrome"))
+hs.hotkey.bind(hAlt, "T", open("iTerm"))
+hs.hotkey.bind(hAlt, "V", open("Visual Studio Code"))
+hs.hotkey.bind(hAlt, "M", open("NeteaseMusic"))
+hs.hotkey.bind(hAlt,"N",open("Microsoft OneNote"))
+---------    快速打开应用程序  end        ------------ 
+
+---------    自动切换应用的默认语言  begin        ------------ 
+-- 
 -- local function Chinese()
 --     hs.keycodes.currentSourceID("com.sogou.inputmethod.sogou.pinyin")
 -- end
@@ -41,16 +78,20 @@ hs.hotkey.bind({"alt"},"N",open("Microsoft OneNote"))
 -- set_app_input_method('iTerm2', English)
 -- set_app_input_method('Google Chrome', English)
 -- set_app_input_method('WeChat', Chinese)
+---------    自动切换应用的默认语言  end        ------------ 
 
--- 获取当前运行程序的SourceID
-hs.hotkey.bind({'ctrl', 'cmd'}, ".", function()
-    hs.alert.show("App path:        "
-          ..hs.window.focusedWindow():application():path()
-          .."\n"
-          .."App name:      "
-          ..hs.window.focusedWindow():application():name()
-          .."\n"
-          .."IM source id:  "
-          ..hs.keycodes.currentSourceID())
-end)
 
+
+---------    获取当前运行程序的SourceID  begin        ------------ 
+-- 
+-- hs.hotkey.bind({'ctrl', 'cmd'}, ".", function()
+--     hs.alert.show("App path:        "
+--           ..hs.window.focusedWindow():application():path()
+--           .."\n"
+--           .."App name:      "
+--           ..hs.window.focusedWindow():application():name()
+--           .."\n"
+--           .."IM source id:  "
+--           ..hs.keycodes.currentSourceID())
+-- end)
+---------    获取当前运行程序的SourceID  end        ------------ 

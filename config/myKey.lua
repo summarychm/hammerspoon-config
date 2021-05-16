@@ -51,6 +51,7 @@ hs.hotkey.bind(hAlt, "T", open("iTerm"))
 hs.hotkey.bind(hAlt, "V", open("Visual Studio Code"))
 hs.hotkey.bind(hAlt, "M", open("NeteaseMusic"))
 hs.hotkey.bind(hAlt,"N",open("Microsoft OneNote"))
+hs.hotkey.bind(hAlt,"D",open("大象"))
 ---------    快速打开应用程序  end        ------------ 
 
 ---------    自动切换应用的默认语言  begin        ------------ 

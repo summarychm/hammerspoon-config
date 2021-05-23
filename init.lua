@@ -1,7 +1,7 @@
 -- hammerspoon
 print('==================================================')
--- require "config.window-management"
--- require "config.key-binding" -- 设置程序在屏幕上的显示位置(基于config.window-management)
+require "config.window-management"
+require "config.key-binding" -- 设置程序在屏幕上的显示位置(基于config.window-management)
 require "config.myKey"
 require "config.myEvent"
 local speech = require 'hs.speech'

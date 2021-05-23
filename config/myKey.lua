@@ -45,7 +45,7 @@ function open(name)
 end
 -- quick open applications
 hs.hotkey.bind(hAlt, "E", open("Finder"))
-hs.hotkey.bind(hAlt, "W", open("WeChat"))
+hs.hotkey.bind(hAlt, "W", open("微信"))
 hs.hotkey.bind(hAlt, "C", open("Google Chrome"))
 hs.hotkey.bind(hAlt, "T", open("iTerm"))
 hs.hotkey.bind(hAlt, "V", open("Visual Studio Code"))

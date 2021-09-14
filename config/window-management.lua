@@ -85,7 +85,8 @@ end
 
 module.centerOnScreen = function ()
   local this = windowMeta.new()
-  this.window:centerOnScreen(this.screen)
+  module.maximizeWindow(); -- 先全屏
+  this.window:centerOnScreen(this.screen) -- 再居中展示
 end
 
 module.throwLeft = function ()

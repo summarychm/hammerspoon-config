@@ -1,20 +1,34 @@
--- hammerspoon
-require "config.window-management"
-require "config.key-binding" -- 设置程序在屏幕上的显示位置(基于config.window-management)
-require "config.myKey"
-require "config.myEvent"
-local speech = require 'hs.speech'
+require "config.windowManage" -- 窗口管理
+require "config.screen" -- 多屏间光标切换
+require "config.quickOpen" -- 快速启动程序
+require "config.myEvent" -- 系统事件监听操作
+require "config/inputStat" -- 输入法状态显示
+require "config.reload" -- 重新加载配置文件
+require "config.systemInfo" -- 菜单栏显示网络,cpu,磁盘信息
+require "config.finder" -- 激活访达时,前置所有访达窗口
+
+-- 简写clear方法,方便控制台清空
+clear = hs.console.clearConsole
+
+-- 调整 默认动画时间 default 0.2
+window.animationDuration = 0
+
+-- 载入成功提示
+hs.notify.new({
+    title = "Manatee",
+    informativeText = "配置文件载入成功!"
+}):send()
 
 
--- -- Private use
--- if (hs.host.localizedName() == 'kaboom的MacBook Pro') then
--- 	require("autoscript.autoscript")
--- end
+
+
+
 
 
 -- Init speaker. 如果弹窗提示,则说明脚本没有问题
-speaker = speech.new()
-hs.notify.new({title="Manatee", informativeText="Andy, I am online!"}):send()
+-- local speech = require 'hs.speech'
+-- speaker = speech.new()
+
 -- Speak something after configuration success.
 -- speaker:speak("Andy, I am online!")
 

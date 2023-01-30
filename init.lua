@@ -6,9 +6,10 @@ require "config/inputStat" -- 输入法状态显示
 require "config.reload" -- 重新加载配置文件
 require "config.systemInfo" -- 菜单栏显示网络,cpu,磁盘信息
 require "config.finder" -- 激活访达时,前置所有访达窗口
+require "config.clear" -- 注册清屏快捷键
 
--- 简写clear方法,方便控制台清空
-clear = hs.console.clearConsole
+
+
 
 -- 调整 默认动画时间 default 0.2
 window.animationDuration = 0
@@ -18,6 +19,8 @@ hs.notify.new({
     title = "Manatee",
     informativeText = "配置文件载入成功!"
 }):send()
+clear();
+
 
 
 

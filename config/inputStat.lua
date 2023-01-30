@@ -50,18 +50,18 @@ local listenerEvent = function()
     end
 end
 
-local gap = hs.timer.localTime(); -- 按键时的秒数
-mEventtap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(event)
-    local currt = hs.timer.localTime(); -- 按键时的秒数
-
+-- 监听按 shift 键切换中英文的情况,输出当前输入状态
+mEventtap = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.types.flagsChanged}, function(event)
+    local key = event:getKeyCode(); -- 键 key
+    local codeStr = hs.keycodes.map[event:getKeyCode()]; -- 键 value
+    -- print("key:" .. key .. " value:" .. codeStr)
     -- 获取shift按键信息
-    if event:getKeyCode() == 56 and event:getFlags().shift then
+    if key == 56 and event:getFlags().shift then
         showStat()
         -- 如果同时按了其他辅助键,则不显示
-    elseif (event:getKeyCode() ~= 56 and timer) then
+    elseif (key ~= 56 and timer) then
         timer:stop();
     end
-    gap = currt;
 end);
 mEventtap:start()
 hs.timer.doEvery(1, listenerEvent) -- 有BUG,经常假死
@@ -80,7 +80,7 @@ hs.keycodes.inputSourceChanged(function()
     if (currentSourceID == abcId) then
         hs.alert.show("ABC")
         reverse = false
-    elseif (currentSourceID == sougouId or currentSourceID == shuangpinId) then
+    elseif (isChinese()) then
         showStat()
         reverse = true
     end
